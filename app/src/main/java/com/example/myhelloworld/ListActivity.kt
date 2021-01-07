@@ -21,13 +21,13 @@ class ListActivity : AppCompatActivity() {
 
         val paises = arrayOf(brasil, argentina, paraguai)
 
-        lista.adapter = PaisAdapter(applicationContext, paises)
+        lista.adapter = PaisAdapter(applicationContext, paises, assets)
             //ArrayAdapter<Pais>(this, android.R.layout.simple_list_item_1, paises)
 
         lista.setOnItemClickListener(AdapterView.OnItemClickListener { _, _, position, _ ->
             Toast.makeText(this, "Item Clicado : $position", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this@ListActivity, SelectedCountryActivity::class.java)
-            intent.putExtra("pais", paises[position].nome)
+            val intent = Intent(this@ListActivity, DetailActivity::class.java)
+            intent.putExtra("pais", paises[position])
             startActivity(intent)
         })
     }
